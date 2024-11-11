@@ -1,0 +1,84 @@
+{
+  "name": "bunny-satori",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Satori for Edge Scripting for bunny.net 🐰",
+  "keywords": [
+    "BunnyCDN",
+    "bunny.net",
+    "bunny",
+    "cdn",
+    "bunny-launcher",
+    "typescript",
+    "edge-scripting",
+    "edge",
+    "scripting",
+    "satori",
+    "wasm"
+  ],
+  "homepage": "https://bunny-launcher.net/imaging/satori/",
+  "bugs": "https://github.com/jlarmstrongiv/bunny-satori/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlarmstrongiv/bunny-satori.git"
+  },
+  "license": "AGPL-3.0-only",
+  "author": "John L. Armstrong IV",
+  "sideEffects": false,
+  "scripts": {
+    "build:dev": "MINIFY=false npx tsx src/bundler",
+    "build": "npx tsx src/bundler",
+    "patch": "npx patch-package yoga-wasm-web --exclude='nothing'",
+    "postinstall:local": "npx patch-package",
+    "prepublishOnly": "npm run build",
+    "pretest:deno": "npm run build:dev",
+    "pretest:node": "npm run build:dev",
+    "test:deno": "deno run --allow-all src/test/index.test.tsx",
+    "test:node": "npx tsx src/test/index.test.tsx"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "satori": "^0.11.3",
+    "yoga-wasm-web": "^0.3.3"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    },
+    "satori": {
+      "optional": true
+    },
+    "yoga-wasm-web": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "22.5.4",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "esbuild": "0.24.0",
+    "fs-extra": "11.2.0",
+    "patch-package": "8.0.0",
+    "satori": "0.11.3",
+    "tsx": "4.19.1",
+    "typescript": "5.5.4",
+    "yoga-wasm-web": "0.3.3"
+  },
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
